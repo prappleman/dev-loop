@@ -6,7 +6,7 @@
 	/* use preset colors by: var(--attribute) */
 	--primary: #9ce8ff;
 	--secondary: #92bbaf;
-	--tertiary: #2c6161;
+	--tertiary: #2d2e32;
 	--light-dark: #51147a;
 	--dark: #200830;
 }
@@ -42,7 +42,7 @@ h6 {
 }
 
 p {
-	margin-bottom: /* Your preferred margin-bottom */ ;
+	margin-bottom: 0;
 }
 
 a {
