@@ -1,52 +1,82 @@
-const {
-    Model,
-    DataTypes
-} = require('sequelize');
-const sequelize = require('../../config/connection');
-const bcrypt = require('bcrypt');
+const router = require("express").Router();
+const { User } = require("../../models");
 
+router.post("/", (req, res) => {
+  User.create({
+    username: req.body.username,
+    password: req.body.password
+  })
+  .then(dbUserData => {
+    req.session.save(() => {
+      req.session.userId = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
 
-class User extends Model {
-    checkPassword(loginPw) {
-        return bcrypt.compareSync(loginPw, this.password);
+      res.json(dbUserData);
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+router.post("/login", (req, res) => {
+  User.findOne({
+    where: {
+      username: req.body.username
     }
-}
-
-User.init({
-    id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            len: [4]
-        }
+  }).then(dbUserData => {
+    if (!dbUserData) {
+      res.status(400).json({ message: 'No user account found!' });
+      return;
     }
-}, {
-    hooks: {
-        async beforeCreate(newUserData) {
-            newUserData.password = await bcrypt.hash(newUserData.password, 10);
-            return newUserData;
-        },
-        async beforeUpdate(updatedUserData) {
-            updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-            return updatedUserData;
-        }
-    },
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'user'
-})
 
+    const validPassword = dbUserData.checkPassword(req.body.password);
 
-module.exports = User;
+    if (!validPassword) {
+      res.status(400).json({ message: 'Incorrect password!' });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.userId = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+  
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });
+  });
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
+
+router.delete("/user/:id", (req, res) => {
+  User.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(dbUserData => {
+    if (!dbUserData) {
+      res.status(404).json({ message: 'No user found with this id' });
+      return;
+    }
+    res.json(dbUserData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+module.exports = router;
