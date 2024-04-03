@@ -1,5 +1,5 @@
 {
-  "name": "tech-blog",
+  "name": "dev-loop",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/layc41/tech-blog.git"
+    "url": "git+https://github.com/layc41/dev-loop.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/layc41/tech-blog/issues"
+    "url": "https://github.com/layc41/dev-loop/issues"
   },
-  "homepage": "https://github.com/layc41/tech-blog#readme",
+  "homepage": "https://github.com/layc41/dev-loop#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.4",
