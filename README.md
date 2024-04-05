@@ -61,6 +61,5 @@ Pull Requests
 ![None License](https://img.shields.io/badge/License-None-brightgreen)
 This project is not licensed and is provided as-is without any warranty. You are free to use, modify, and distribute the code as you see fit. However, we do not provide any legal protection or support for this project.
 
-
 ## Questions
-For questions about this project, contact [Parker Rappleye](https://github.com/prappleman) via email at parker.ra
+For questions about this project, contact [Parker Rappleye](https://github.com/prappleman) via email at parker.rappleye1@gmail.com.
