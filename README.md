@@ -26,6 +26,12 @@ Ready to dive in? Explore Dev Loop now and start shaping the future of tech disc
 
 Follow these steps to start using the app and sharing your content with the community!
 
+### Dashboard
+![Dashboard](assets/dashboard.png)
+
+### Homepage
+![Homepage](assets/home.png)
+
 ## Features
 - **Homepage**: Displays existing blog posts (if any), navigation links, and login option.
 - **Navigation Links**: Take users to different sections based on their authentication status.
