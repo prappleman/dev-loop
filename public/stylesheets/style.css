@@ -1,10 +1,11 @@
 :root {
-    --primary: #555b7e;
-    --secondary: #3C415C;
-    --tertiary: #978a8a;
     --light-dark: #1f1f1f;
     --dark: #000000;
     --white: white;
+    --primary: #555b7e;
+    --secondary: #3C415C;
+    --light: #7d83a6;
+    --tertiary: #978a8a;
     --border-radius: 0.3rem;
   }
   
@@ -32,15 +33,12 @@
     margin: 0;
     line-height: 1.25;
   }
-  
-  h2 a:visited {
+
+    h2 a {
     color: var(--primary);
   }
-  
-  h2 a {
-    color: var(--primary);
-  }
-  
+
+
   header {
     margin-top: 50px;
   }
@@ -56,7 +54,7 @@
   }
 
   a:hover {
-    color: var(--tertiary);
+    color: var(--light);
   }
   
   p {
@@ -190,6 +188,11 @@
   .card-body,
   .newpost {
     padding: 1%;
+  }
+
+  .card-body p:hover  {
+    color: var(--light);
+    font-style: italic;
   }
   
   /* FORM */
