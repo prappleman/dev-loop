@@ -188,6 +188,11 @@
     padding: 1%;
   }
 
+  .newpost a {
+    margin-bottom: 0;
+    margin-top: 16px;
+  }
+
   .card-body p:hover  {
     color: var(--light);
     font-style: italic;
@@ -239,6 +244,13 @@
     }
 
     .app-title {
+      width: 100%;
+      text-align: center;
+    }
+
+    .newpost a{
+      margin-left: 10px;
+      margin-right: 10px;
       width: 100%;
       text-align: center;
     }
