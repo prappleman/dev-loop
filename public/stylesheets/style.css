@@ -6,6 +6,9 @@
     --secondary: #3C415C;
     --light: #7d83a6;
     --tertiary: #978a8a;
+
+    --transparent: rgba(255,255,255, 0.3);
+
     --border-radius: 0.3rem;
   }
   
@@ -36,11 +39,6 @@
 
     h2 a {
     color: var(--primary);
-  }
-
-
-  header {
-    margin-top: 50px;
   }
   
   main {
@@ -107,7 +105,7 @@
   
   .navbar {
     width: 100%;
-    position: fixed;
+    position: relative;
     background-color: var(--tertiary);
   }
   
@@ -120,7 +118,7 @@
   }
   
   .hero {
-    padding: 3% 4%;
+    padding: 2% 3%;
     background-color: var(--tertiary);
     color: var(--primary);
   }
@@ -218,6 +216,34 @@
     color: var(--white)
   }
   
+  /* phone sizing */
+  @media (max-width: 798px) {
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      font-size: x-large;
+      border: 2px solid var(--transparent);
+      border-radius: var(--border-radius);
+      margin-bottom: 5px;
+    }
+
+    ul {
+      padding: 0;
+      
+    }
+
+    .hero {
+      order: -1;
+    }
+
+    .app-title {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
   /* HEIGHT / WIDTH UTILS */
   .min-100-vh {
     min-height: 100vh;
